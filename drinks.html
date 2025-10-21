@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <style>
+.nav-link.active {
+    text-decoration: underline;
+    font-weight: bold;
+} 
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            background-color: #f5f5f5;
+        }
+        header {
+    background: #2d4a3b;
+    color: white;
+    margin: 0;
+    padding: 1rem 0;
+    width: 100%;
+}
+nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+}
+
+nav li {
+    margin: 0 15px;
+}
+
+nav a {
+    color: rgb(255, 255, 255);
+    text-decoration: none;
+}
+
+
+nav a:hover {
+    text-decoration: underline;
+}
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            margin-top: 40px;
+            
+
+        }
+      
+        .menu-section {
+            margin-bottom: 30px;
+            padding: 20px;
+            border-left: 4px solid #DAA520;
+            background-color: #fafafa;
+        }
+       
+    </style>
+</head>
+<body>
+
+    <header>
+        <nav>
+            <ul>
+                <li><a href="index.html" class="nav-link">Главная</a></li>
+                <li><a href="menu.html" class="nav-link">Меню напитков</a></li>
+                <li><a href="contact.html" class="nav-link">Контактные данные</a></li>
+                <li><a href="special.html" class="nav-link">Партнёры</a> </li>
+                <li><a href="originaldata.html" class="nav-link">Оригинальные данные</a></li>
+                <li><a href="drinks.html" class="nav-link">Эксклюзив</a></li>
+                <li><a href="table.html" class="nav-link">Таблица</a></li>
+            </ul>
+        </nav>
+    </header>
+    <div class="container">
+        <!-- Нумерованный список -->
+        <div class="menu-section">
+            <h2>Этапы приготовления нашего фирменного кофе</h2>
+            <ol>
+                <li>Отбор лучших кофейных зерен</li>
+                <li>Обжарка до средней степени</li>
+                <li>Помол непосредственно перед приготовлением</li>
+                <li>Точное взвешивание порции</li>
+                <li>Экстракция под оптимальным давлением</li>
+                <li>Подача с профессиональным латте-артом</li>
+            </ol>
+        </div>
+
+        <!-- Маркированный список -->
+        <div class="menu-section">
+            <h2>Специальные предложения</h2>
+            <ul>
+                <li>Горячий шоколад "Снежная сказка"</li>
+                <li>Моккачино "Колдовство Огненной Саламандры"</li>
+                <li>Гляссе "Хрустальные грёзы"</li>
+                <li>Макиато "Бархатный омут"</li>
+                <li>Бамбл-кофе "Вихрь из мёда и имбиря"</li>
+            </ul>
+        </div>
+
+        <!-- Вложенные списки  -->
+        <div class="menu-section">
+            <h2>Дополнительные опции</h2>
+            <ul>
+                <li>Выбор размера:
+                    <ul>
+                        <li>Маленький (200 мл)</li>
+                        <li>Средний (300 мл)</li>
+                        <li>Большой (400 мл)</li>
+                    </ul>
+                </li>
+                <li>Тип молока:
+                    <ul>
+                        <li>Коровье</li>
+                        <li>Миндальное</li>
+                        <li>Кокосовое</li>
+                        <li>Соевое</li>
+                        <li>Овсяное</li>
+                    </ul>
+                </li>
+                <li>Добавки:
+                    <ul>
+                        <li>Сиропы:
+                            <ul>
+                                <li>Ванильный</li>
+                                <li>Карамельный</li>
+                                <li>Фундуковый</li>
+                                <li>Кленовый</li>
+                            </ul>
+                        </li>
+                        <li>Декор:
+                            <ul>
+                                <li>Шоколадная крошка</li>
+                                <li>Корица</li>
+                                <li>Тертый мускатный орех</li>
+                                <li>Взбитые сливки</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const currentPage = window.location.pathname.split('/').pop();
+            const navLinks = document.querySelectorAll('.nav-link');
+            
+            navLinks.forEach(link => {
+                const linkPage = link.getAttribute('href');
+                
+                if (linkPage === currentPage || 
+                    (currentPage === '' && linkPage === 'index.html') ||
+                    (currentPage === 'index.html' && linkPage === 'index.html')) {
+                    
+                    link.classList.add('active');
+                }
+            });
+        });
+    </script> 
+</body>
+</html>
