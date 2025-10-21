@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* Жесткий сброс стилей для формы */
+        .nav-link.active {
+    text-decoration: underline;
+    font-weight: bold;
+} 
+        #coffee-feedback-wrapper * {
+            box-sizing: border-box !important;
+            margin: 0 !important;
+            padding: 0 !important;
+            font-family: Arial, sans-serif !important;
+            font-size: 14px !important;
+            line-height: 1.4 !important;
+        }
+        
+        #coffee-feedback-wrapper {
+            max-width: 600px;
+            margin: 40px auto !important;
+            padding: 30px;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        #coffee-feedback-wrapper h1.coffee-title {
+            color: #8B4513 !important;
+            text-align: center !important;
+            margin-bottom: 30px !important;
+            font-size: 24px !important;
+            font-weight: bold !important;
+        }
+        
+        #coffee-feedback-wrapper .coffee-form-group {
+            margin-bottom: 20px !important;
+            padding-bottom: 15px !important;
+            border-bottom: 1px solid #eee !important;
+        }
+        
+        #coffee-feedback-wrapper label.coffee-main-label {
+            display: block !important;
+            margin-bottom: 8px !important;
+            font-weight: bold !important;
+            color: #333 !important;
+            font-size: 14px !important;
+        }
+        
+        #coffee-feedback-wrapper .coffee-radio-label, 
+        #coffee-feedback-wrapper .coffee-checkbox-label {
+            font-weight: normal !important;
+            color: #333 !important;
+            font-size: 14px !important;
+        }
+        
+        #coffee-feedback-wrapper input.coffee-input[type="text"],
+        #coffee-feedback-wrapper input.coffee-input[type="date"],
+        #coffee-feedback-wrapper textarea.coffee-textarea {
+            width: 100% !important;
+            padding: 8px 12px !important;
+            border: 1px solid #ddd !important;
+            border-radius: 5px !important;
+            font-size: 14px !important;
+            background-color: white !important;
+            display: block !important;
+        }
+        
+        #coffee-feedback-wrapper .coffee-radio-group, 
+        #coffee-feedback-wrapper .coffee-checkbox-group {
+            display: flex !important;
+            flex-direction: column !important;
+            gap: 8px !important;
+        }
+        
+        #coffee-feedback-wrapper .coffee-radio-option, 
+        #coffee-feedback-wrapper .coffee-checkbox-option {
+            display: flex !important;
+            align-items: center !important;
+            gap: 8px !important;
+        }
+        
+        #coffee-feedback-wrapper .coffee-rating-section {
+            display: grid !important;
+            grid-template-columns: repeat(5, 1fr) !important;
+            gap: 8px !important;
+            margin-top: 10px !important;
+        }
+        
+        #coffee-feedback-wrapper .coffee-rating-option {
+            text-align: center !important;
+            padding: 8px !important;
+            border: 1px solid #ddd !important;
+            border-radius: 5px !important;
+            cursor: pointer !important;
+            font-size: 14px !important;
+            background-color: white !important;
+        }
+        
+        #coffee-feedback-wrapper .coffee-rating-option:hover {
+            background-color: #f0f0f0 !important;
+        }
+        
+        #coffee-feedback-wrapper .coffee-rating-option.coffee-selected {
+            background-color: #8B4513 !important;
+            color: white !important;
+            border-color: #8B4513 !important;
+        }
+        
+        #coffee-feedback-wrapper button.coffee-submit-btn {
+            background-color: #8B4513 !important;
+            color: white !important;
+            padding: 12px 24px !important;
+            border: none !important;
+            border-radius: 5px !important;
+            font-size: 16px !important;
+            cursor: pointer !important;
+            width: 100% !important;
+            margin-top: 20px !important;
+            font-weight: normal !important;
+            display: block !important;
+        }
+        
+        #coffee-feedback-wrapper button.coffee-submit-btn:hover {
+            background-color: #654321 !important;
+        }
+        
+        /* Стили для радио и чекбоксов */
+        #coffee-feedback-wrapper input.coffee-radio[type="radio"],
+        #coffee-feedback-wrapper input.coffee-checkbox[type="checkbox"] {
+            width: auto !important;
+            margin: 0 !important;
+            transform: none !important;
+        }
+
+        /* Обертка для изоляции формы от header */
+        .form-isolation-wrapper {
+            margin-top: 40px !important;
+            padding: 20px 0 !important;
+            background-color: #f5f5f5 !important;
+            min-height: 100vh !important;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="index.html" class="nav-link">Главная</a></li>
+                <li><a href="menu.html" class="nav-link">Меню напитков</a></li>
+                <li><a href="contact.html" class="nav-link">Контактные данные</a></li>
+                <li><a href="special.html" class="nav-link">Партнёры</a> </li>
+                <li><a href="originaldata.html" class="nav-link">Оригинальные данные</a></li>
+                <li><a href="drinks.html" class="nav-link">Эксклюзив</a></li>
+                <li><a href="table.html" class="nav-link">Таблица</a></li>
+            </ul>
+        </nav>
+    </header>
+    
+    <div class="form-isolation-wrapper">
+        <div id="coffee-feedback-wrapper">
+            <h1 class="coffee-title">Отзыв о кофейне Moss & Marble</h1>
+            
+            <form id="coffeeShopForm" action="https://ваш-удаленный-сервер.com/submit" method="POST">
+                <!-- Основные данные -->
+                <div class="coffee-form-group">
+                    <label for="customer_name" class="coffee-main-label">Фамилия и имя:</label>
+                    <input type="text" id="customer_name" name="customer_name" class="coffee-input" placeholder="Введите ваше имя" required>
+                </div>
+
+                <!-- Любимый напиток (radio) -->
+                <div class="coffee-form-group">
+                    <label class="coffee-main-label">Ваш любимый напиток:</label>
+                    <div class="coffee-radio-group">
+                        <div class="coffee-radio-option">
+                            <input type="radio" id="drink_espresso" name="favorite_drink" class="coffee-radio" value="Эспрессо 'Слеза эльфийки'" required>
+                            <label for="drink_espresso" class="coffee-radio-label">Эспрессо "Слеза эльфийки"</label>
+                        </div>
+                        <div class="coffee-radio-option">
+                            <input type="radio" id="drink_cappuccino" name="favorite_drink" class="coffee-radio" value="Капучино 'Отвар лесной ведьмы'">
+                            <label for="drink_cappuccino" class="coffee-radio-label">Капучино "Отвар лесной ведьмы"</label>
+                        </div>
+                        <div class="coffee-radio-option">
+                            <input type="radio" id="drink_latte" name="favorite_drink" class="coffee-radio" value="Латте 'Шёлковый покров нимфы'">
+                            <label for="drink_latte" class="coffee-radio-label">Латте "Шёлковый покров нимфы"</label>
+                        </div>
+                        <div class="coffee-radio-option">
+                            <input type="radio" id="drink_americano" name="favorite_drink" class="coffee-radio" value="Американо 'Туман долины фей'">
+                            <label for="drink_americano" class="coffee-radio-label">Американо "Туман долины фей"</label>
+                        </div>
+                        <div class="coffee-radio-option">
+                            <input type="radio" id="drink_matcha" name="favorite_drink" class="coffee-radio" value="Матча 'Изумрудный взгляд дриады'">
+                            <label for="drink_matcha" class="coffee-radio-label">Матча "Изумрудный взгляд дриады"</label>
+                        </div>
+                        <div class="coffee-radio-option">
+                            <input type="radio" id="drink_frappuccino" name="favorite_drink" class="coffee-radio" value="Фраппучино 'Дыхание лесного духа'">
+                            <label for="drink_frappuccino" class="coffee-radio-label">Фраппучино "Дыхание лесного духа"</label>
+                        </div>
+                        <div class="coffee-radio-option">
+                            <input type="radio" id="drink_ice_latte" name="favorite_drink" class="coffee-radio" value="Айс-латте 'Эликсир горного духа'">
+                            <label for="drink_ice_latte" class="coffee-radio-label">Айс-латте "Эликсир горного духа"</label>
+                        </div>
+                        <div class="coffee-radio-option">
+                            <input type="radio" id="drink_pumpkin_latte" name="favorite_drink" class="coffee-radio" value="Тыквенно-пряный латте 'Флюид ржавого солнца'">
+                            <label for="drink_pumpkin_latte" class="coffee-radio-label">Тыквенно-пряный латте "Флюид ржавого солнца"</label>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Оценка визита (number как рейтинг) -->
+                <div class="coffee-form-group">
+                    <label class="coffee-main-label">Оценка визита в кофейню (1-5):</label>
+                    <div class="coffee-rating-section" id="ratingSection">
+                        <div class="coffee-rating-option" data-value="1">1</div>
+                        <div class="coffee-rating-option" data-value="2">2</div>
+                        <div class="coffee-rating-option" data-value="3">3</div>
+                        <div class="coffee-rating-option" data-value="4">4</div>
+                        <div class="coffee-rating-option" data-value="5">5</div>
+                    </div>
+                    <input type="hidden" id="visit_rating" name="visit_rating" value="" required>
+                </div>
+
+                <!-- Что нравится (checkbox) -->
+                <div class="coffee-form-group">
+                    <label class="coffee-main-label">Что вам нравится в "Moss & Marble"?</label>
+                    <div class="coffee-checkbox-group">
+                        <div class="coffee-checkbox-option">
+                            <input type="checkbox" id="like_drinks" name="likes[]" class="coffee-checkbox" value="drinks">
+                            <label for="like_drinks" class="coffee-checkbox-label">Напитки</label>
+                        </div>
+                        <div class="coffee-checkbox-option">
+                            <input type="checkbox" id="like_interior" name="likes[]" class="coffee-checkbox" value="interior">
+                            <label for="like_interior" class="coffee-checkbox-label">Интерьер</label>
+                        </div>
+                        <div class="coffee-checkbox-option">
+                            <input type="checkbox" id="like_service" name="likes[]" class="coffee-checkbox" value="service">
+                            <label for="like_service" class="coffee-checkbox-label">Обслуживание</label>
+                        </div>
+                        <div class="coffee-checkbox-option">
+                            <input type="checkbox" id="like_atmosphere" name="likes[]" class="coffee-checkbox" value="atmosphere">
+                            <label for="like_atmosphere" class="coffee-checkbox-label">Атмосфера</label>
+                        </div>
+                        <div class="coffee-checkbox-option">
+                            <input type="checkbox" id="like_music" name="likes[]" class="coffee-checkbox" value="music">
+                            <label for="like_music" class="coffee-checkbox-label">Музыка</label>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Ощущения (checkbox) -->
+                <div class="coffee-form-group">
+                    <label class="coffee-main-label">Какое ощущение у вас вызывает "Moss & Marble"?</label>
+                    <div class="coffee-checkbox-group">
+                        <div class="coffee-checkbox-option">
+                            <input type="checkbox" id="feeling_calm" name="feelings[]" class="coffee-checkbox" value="calm">
+                            <label for="feeling_calm" class="coffee-checkbox-label">Спокойствие</label>
+                        </div>
+                        <div class="coffee-checkbox-option">
+                            <input type="checkbox" id="feeling_peace" name="feelings[]" class="coffee-checkbox" value="peace">
+                            <label for="feeling_peace" class="coffee-checkbox-label">Умиротворение</label>
+                        </div>
+                        <div class="coffee-checkbox-option">
+                            <input type="checkbox" id="feeling_energy" name="feelings[]" class="coffee-checkbox" value="energy">
+                            <label for="feeling_energy" class="coffee-checkbox-label">Энергия</label>
+                        </div>
+                        <div class="coffee-checkbox-option">
+                            <input type="checkbox" id="feeling_inspiration" name="feelings[]" class="coffee-checkbox" value="inspiration">
+                            <label for="feeling_inspiration" class="coffee-checkbox-label">Вдохновение</label>
+                        </div>
+                        <div class="coffee-checkbox-option">
+                            <input type="checkbox" id="feeling_cozy" name="feelings[]" class="coffee-checkbox" value="cozy">
+                            <label for="feeling_cozy" class="coffee-checkbox-label">Уют</label>
+                        </div>
+                        <div class="coffee-checkbox-option">
+                            <input type="checkbox" id="feeling_enlightenment" name="feelings[]" class="coffee-checkbox" value="enlightenment">
+                            <label for="feeling_enlightenment" class="coffee-checkbox-label">Просветление</label>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Отзыв (textarea) -->
+                <div class="coffee-form-group">
+                    <label for="feedback" class="coffee-main-label">Пожалуйста, оставьте отзыв о визите в нашу кофейню:</label>
+                    <textarea id="feedback" name="feedback" class="coffee-textarea" rows="4" placeholder="Расскажите о вашем опыте..."></textarea>
+                </div>
+
+                <!-- Дата визита (date) -->
+                <div class="coffee-form-group">
+                    <label for="visit_date" class="coffee-main-label">Дата визита:</label>
+                    <input type="date" id="visit_date" name="visit_date" class="coffee-input" required>
+                </div>
+
+                <button type="submit" class="coffee-submit-btn">Отправить отзыв</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        // Рейтинг система
+        const ratingOptions = document.querySelectorAll('.coffee-rating-option');
+        const ratingInput = document.getElementById('visit_rating');
+        
+        ratingOptions.forEach(option => {
+            option.addEventListener('click', function() {
+                // Убираем выделение у всех
+                ratingOptions.forEach(opt => opt.classList.remove('coffee-selected'));
+                // Выделяем выбранный
+                this.classList.add('coffee-selected');
+                // Устанавливаем значение
+                ratingInput.value = this.getAttribute('data-value');
+            });
+        });
+
+        // Обработка отправки формы
+        document.getElementById('coffeeShopForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Собираем данные формы
+            const formData = new FormData(this);
+            const params = new URLSearchParams();
+            
+            // Добавляем все данные формы в параметры URL
+            for (let [key, value] of formData.entries()) {
+                // Для чекбоксов с несколькими значениями
+                if (key.endsWith('[]')) {
+                    const existing = params.get(key);
+                    if (existing) {
+                        params.set(key, existing + ',' + value);
+                    } else {
+                        params.set(key, value);
+                    }
+                } else {
+                    params.set(key, value);
+                }
+            }
+            
+            // Отправка данных на сервер
+            fetch(this.action, {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => {
+                // После отправки открываем Яндекс с данными формы
+                const yandexUrl = 'https://yandex.ru/search/?' + params.toString();
+                window.open(yandexUrl, '_blank');
+            })
+            .catch(error => {
+                console.error('Ошибка:', error);
+                const yandexUrl = 'https://yandex.ru/search/?' + params.toString();
+                window.open(yandexUrl, '_blank');
+            });
+        });
+
+        // Устанавливаем сегодняшнюю дату по умолчанию
+        document.getElementById('visit_date').valueAsDate = new Date();
+    </script>
+
+     <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const currentPage = window.location.pathname.split('/').pop();
+            const navLinks = document.querySelectorAll('.nav-link');
+            
+            navLinks.forEach(link => {
+                const linkPage = link.getAttribute('href');
+                
+                if (linkPage === currentPage || 
+                    (currentPage === '' && linkPage === 'index.html') ||
+                    (currentPage === 'index.html' && linkPage === 'index.html')) {
+                    
+                    link.classList.add('active');
+                }
+            });
+        });
+    </script> 
+
+</body>
+</html>
